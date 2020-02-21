@@ -7,7 +7,7 @@ from base64 import encode
 
 type
   BadgeRef* = ref object
-    style: string  ## egg "flat", "square" or "plastic"
+    style: string  ## egg "flat", "square", "plastic" etc.
     label: string  ## left text.
     value: string  ## right text.
     label_text_color: string  ## left text color

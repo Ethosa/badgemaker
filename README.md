@@ -6,6 +6,21 @@ The Nim badgemaker tool.
 -   via git: `nimble install https://github.com/Ethosa/badgemaker`
 
 
+## Standart badge params
+-   `style` -- "flat".
+-   `label` -- "".
+-   `value` -- "".
+-   `label_text_color` -- "white".
+-   `value_text_color` -- "black".
+-   `label_color` -- "#212121".
+-   `value_color` -- "#e0e0e0".
+-   `font` -- "DejaVu Sans,Verdana,Geneva,sans-serif".
+-   `font_size` -- 12.
+-   `width` -- 120.
+-   `height` -- 20.
+-   `image_path` -- "".
+-   `image_color` -- "".
+
 ## Results
 [![test1](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)  
 [![test2](https://github.com/Ethosa/badgemaker/blob/master/tests/test2.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test2.svg)  
