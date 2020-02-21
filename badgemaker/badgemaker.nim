@@ -2,6 +2,7 @@
 import streams
 import xmltree
 import strutils
+from base64 import encode
 
 
 type
@@ -15,6 +16,8 @@ type
     value_color: string  ## right color.
     font: string
     width, height: int
+    image_path: string
+    image_color: string
 
 
 proc newBadge*(label="", value="", style="flat", label_color="#212121",
@@ -24,15 +27,23 @@ proc newBadge*(label="", value="", style="flat", label_color="#212121",
            label_text_color: label_text_color, value_text_color: value_text_color,
            label_color: label_color, value_color: value_color,
            font: "DejaVu Sans,Verdana,Geneva,sans-serif",
-           width: width, height: height)
+           width: width, height: height, image_path: "", image_color: "")
 
 proc setFont*(badge: BadgeRef, font: string) =
   badge.font = font
+
+proc setIcon*(badge: BadgeRef, image_path: string) =
+  badge.image_path = image_path
+
+proc setIcon*(badge: BadgeRef, image_path, color: string) =
+  badge.image_path = image_path
+  badge.image_color = color
 
 proc write*(badge: BadgeRef, filename: string) =
   var tree = newXMLTree(
     "svg", [], {
     "xmlns": "http://www.w3.org/2000/svg",
+    "xmlns:xlink": "http://www.w3.org/1999/xlink",
     "width": $badge.width,
     "height": $badge.height
   }.toXMLAttributes)
@@ -59,15 +70,19 @@ proc write*(badge: BadgeRef, filename: string) =
 
   var
     main = newXMLTree("g", [], {"mask": "url(#gradient)"}.toXMLAttributes)
-    labelw = len(badge.label)*9 + len(badge.label)
-    valuew = len(badge.value)*9 + len(badge.value)
+    image_width =
+      if badge.image_path != "":
+        badge.height
+      else:
+        0
+    labelw = len(badge.label)*9 + len(badge.label) + image_width
+    valuew = len(badge.value)*9 + len(badge.value) + image_width
     dif =
       if labelw > valuew:
         labelw - valuew
       else:
         labelw - 12
     radius = if "square" in badge.style: "0" else: "4"
-  echo dif, " ", labelw, " ", valuew
 
   main.add newXMLTree(
     "rect", [], {
@@ -107,7 +122,7 @@ proc write*(badge: BadgeRef, filename: string) =
 
   text.add newXMLTree(
     "text", [], {
-      "x": "2", "y": $(badge.height/2 + 5), "fill": badge.label_text_color
+      "x": $(image_width + 2), "y": $(badge.height/2 + 5), "fill": badge.label_text_color
     }.toXMLAttributes
   )
   text[0].add newText badge.label
@@ -123,6 +138,18 @@ proc write*(badge: BadgeRef, filename: string) =
   tree.add gradient
   tree.add main
   tree.add text
+  if badge.image_path != "":
+    var img = newFileStream(badge.image_path, fmRead)
+    var image = img.readAll
+    img.close
+    tree.add newXMLTree(
+      "image", [], {
+        "xlink:href": "data:image/png;base64," & encode image,
+        "width": $badge.height, "height": $badge.height,
+        "x": radius, "y": "0",
+        "fill": badge.image_color
+      }.toXMLAttributes
+    )
   
   var strm = newFileStream(filename, fmWrite)
   strm.write $tree
