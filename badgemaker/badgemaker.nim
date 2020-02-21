@@ -122,7 +122,8 @@ proc write*(badge: BadgeRef, filename: string) =
 
   text.add newXMLTree(
     "text", [], {
-      "x": $(image_width + 2), "y": $(badge.height/2 + 5), "fill": badge.label_text_color
+      "x": $(image_width + 2 + parseInt(radius)),
+      "y": $(badge.height/2 + 5), "fill": badge.label_text_color
     }.toXMLAttributes
   )
   text[0].add newText badge.label
