@@ -9,4 +9,6 @@ The Nim badgemaker tool.
 [![test4](https://github.com/Ethosa/badgemaker/blob/master/tests/test4.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test4.svg)  
 [![test5](https://github.com/Ethosa/badgemaker/blob/master/tests/test5.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test5.svg)  
 [![test6](https://github.com/Ethosa/badgemaker/blob/master/tests/test6.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test6.svg)  
-[![test7](https://github.com/Ethosa/badgemaker/blob/master/tests/test7.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test7.svg)
+[![test7](https://github.com/Ethosa/badgemaker/blob/master/tests/test7.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test7.svg)  
+[![test8](https://github.com/Ethosa/badgemaker/blob/master/tests/test8.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test8.svg)  
+[![test9](https://github.com/Ethosa/badgemaker/blob/master/tests/test9.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test9.svg)

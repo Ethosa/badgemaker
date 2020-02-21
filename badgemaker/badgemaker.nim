@@ -15,6 +15,7 @@ type
     label_color: string  ## left color.
     value_color: string  ## right color.
     font: string
+    font_size: int
     width, height: int
     image_path: string
     image_color: string
@@ -23,23 +24,32 @@ type
 proc newBadge*(label="", value="", style="flat", label_color="#212121",
                value_color="#e0e0e0", label_text_color="white",
                value_text_color="black", width=120, height=20): BadgeRef =
+  ## Creates a new Badge object.
   BadgeRef(label: label, value: value, style: style,
            label_text_color: label_text_color, value_text_color: value_text_color,
            label_color: label_color, value_color: value_color,
            font: "DejaVu Sans,Verdana,Geneva,sans-serif",
-           width: width, height: height, image_path: "", image_color: "")
+           width: width, height: height, image_path: "", image_color: "",
+           font_size: 12)
 
 proc setFont*(badge: BadgeRef, font: string) =
+  ## Sets badge font.
   badge.font = font
 
+proc setFontSize*(badge: BadgeRef, size: int) =
+  ## Sets badge font size.
+  badge.font_size = size
+
 proc setIcon*(badge: BadgeRef, image_path: string) =
+  ## Sets icon for badge.
   badge.image_path = image_path
 
 proc setIcon*(badge: BadgeRef, image_path, color: string) =
+  ## Sets icon with fill color.
   badge.image_path = image_path
   badge.image_color = color
 
-proc write*(badge: BadgeRef, filename: string) =
+proc `$`*(badge: BadgeRef): string =
   var tree = newXMLTree(
     "svg", [], {
     "xmlns": "http://www.w3.org/2000/svg",
@@ -75,14 +85,16 @@ proc write*(badge: BadgeRef, filename: string) =
         badge.height
       else:
         0
-    labelw = len(badge.label)*9 + len(badge.label) + image_width
-    valuew = len(badge.value)*9 + len(badge.value) + image_width
+    labelw = len(badge.label)*(badge.font_size - 3).int + len(badge.label) + image_width
+    valuew = len(badge.value)*(badge.font_size - 3).int + len(badge.value) + image_width
     dif =
       if labelw > valuew:
         labelw - valuew
       else:
-        labelw - 12
+        labelw - badge.font_size
     radius = if "square" in badge.style: "0" else: "4"
+
+  dif += radius.parseInt
 
   main.add newXMLTree(
     "rect", [], {
@@ -95,15 +107,15 @@ proc write*(badge: BadgeRef, filename: string) =
   main.add newXMLTree(
     "rect", [], {
       "x": $dif, "y": "0",
-      "width": $((badge.width - 6) - (dif)),
+      "width": $((badge.width - (badge.font_size/2).int) - (dif)),
       "height": $badge.height,
       "rx": "0", "ry": "0", "style": "fill:" & badge.value_color
     }.toXMLAttributes
   )
   main.add newXMLTree(
     "rect", [], {
-      "x": $(badge.width - 12), "y": "0",
-      "width": "12", "height": $badge.height,
+      "x": $(badge.width - badge.font_size), "y": "0",
+      "width": $badge.font_size, "height": $badge.height,
       "rx": radius,
       "ry": radius,
       "style": "fill:" & badge.value_color
@@ -117,13 +129,13 @@ proc write*(badge: BadgeRef, filename: string) =
   )
 
   var text = newXMLTree("g", [], {
-    "font-family": badge.font, "font-size": "12", "fill": badge.label_color
+    "font-family": badge.font, "font-size": $badge.font_size, "fill": badge.label_color
     }.toXMLAttributes)
 
   text.add newXMLTree(
     "text", [], {
       "x": $(image_width + 2 + parseInt(radius)),
-      "y": $(badge.height/2 + 5), "fill": badge.label_text_color
+      "y": $(badge.height/2 + (badge.font_size/2) - 1.0), "fill": badge.label_text_color
     }.toXMLAttributes
   )
   text[0].add newText badge.label
@@ -131,7 +143,7 @@ proc write*(badge: BadgeRef, filename: string) =
   text.add newXMLTree(
     "text", [], {
       "x": $(dif + 2),
-      "y": $(badge.height/2 + 5), "fill": badge.value_text_color
+      "y": $(badge.height/2 + (badge.font_size/2) - 1.0), "fill": badge.value_text_color
     }.toXMLAttributes
   )
   text[1].add newText badge.value
@@ -151,7 +163,9 @@ proc write*(badge: BadgeRef, filename: string) =
         "fill": badge.image_color
       }.toXMLAttributes
     )
-  
+  return $tree
+
+proc write*(badge: BadgeRef, filename: string) =
   var strm = newFileStream(filename, fmWrite)
-  strm.write $tree
+  strm.write $badge
   strm.close
