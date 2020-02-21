@@ -2,6 +2,10 @@
 The Nim badgemaker tool.
 
 
+## Install
+-   via git: `nimble install https://github.com/Ethosa/badgemaker`
+
+
 ## Results
 [![test1](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)  
 [![test2](https://github.com/Ethosa/badgemaker/blob/master/tests/test2.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test2.svg)  
