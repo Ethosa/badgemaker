@@ -55,8 +55,10 @@ proc `$`*(badge: BadgeRef): string =
     image_width = if badge.image_path != "": badge.height else: 0
     labell = len(badge.label)
     valuel = len(badge.value)
-    labelw = labell*(badge.font_size - 3).int + labell + image_width
-    valuew = valuel*(badge.font_size - 3).int + valuel + image_width
+    bfsize = (badge.font_size - 3).int
+    bfsize1 = (badge.font_size/2).int)
+    labelw = labell*bfsize + labell + image_width
+    valuew = valuel*bfsize + valuel + image_width
     radius = if "square" in badge.style: "0" else: "4"
     dif =
       if labelw > valuew:
@@ -97,7 +99,7 @@ proc `$`*(badge: BadgeRef): string =
   main.add newXMLTree(
     "rect", [], {
       "x": $dif, "y": "0",
-      "width": $((badge.width - (badge.font_size/2).int) - dif),
+      "width": $((badge.width - bfsize1) - dif),
       "height": $badge.height,
       "rx": "0", "ry": "0", "style": "fill:" & badge.value_color
     }.toXMLAttributes)
