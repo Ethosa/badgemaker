@@ -1,0 +1,16 @@
+<svg width="120" xmlns="http://www.w3.org/2000/svg" height="20">
+  <linearGradient x2="0" id="gradient" y2="100%">
+    <stop stop-color="#bbb" stop-opacity=".1" offset="0" />
+    <stop stop-opacity=".1" offset="1" />
+  </linearGradient>
+  <g mask="url(#gradient)">
+    <rect style="fill:#282A36" width="50" y="0" x="0" rx="0" height="20" ry="0" />
+    <rect style="fill:fuchsia" width="76" y="0" x="38" rx="0" height="20" ry="0" />
+    <rect style="fill:fuchsia" width="12" y="0" x="108" rx="0" height="20" ry="0" />
+    <path fill="url(#gradient)" d="M0 0h120v20H0z" />
+  </g>
+  <g font-size="12" fill="#282A36" font-family="DejaVu Sans,Verdana,Geneva,sans-serif">
+    <text y="15.0" x="2" fill="#e0e0e0">Hello</text>
+    <text y="15.0" x="40" fill="black">world</text>
+  </g>
+</svg>
