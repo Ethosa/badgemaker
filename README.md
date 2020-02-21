@@ -4,6 +4,16 @@ The Nim badgemaker tool.
 
 ## Install
 -   via git: `nimble install https://github.com/Ethosa/badgemaker`
+-   via nimble: `nimble install badgemaker`
+
+
+## Now support
+-   Custom font (change size available).
+-   Custom icons.
+-   Custom colors (label, value, text).
+-   Custom badge size.
+-   Custom styles (flat, plastic, square, plastic square).
+-   CLI.
 
 
 ## Standart badge params
