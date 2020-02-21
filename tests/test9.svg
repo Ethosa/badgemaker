@@ -4,7 +4,7 @@
     <stop stop-opacity=".1" offset="1" />
   </linearGradient>
   <g mask="url(#gradient)">
-    <rect style="fill:#282A36" width="368" y="0" x="0" rx="4" height="32" ry="4" />
+    <rect style="fill:#282A36" width="350" y="0" x="0" rx="4" height="32" ry="4" />
     <rect style="fill:fuchsia" width="211" y="0" x="292" rx="0" height="32" ry="0" />
     <rect style="fill:fuchsia" width="18" y="0" x="494" rx="4" height="32" ry="4" />
     <path fill="url(#gradient)" d="M0 0h512v32H0z" />

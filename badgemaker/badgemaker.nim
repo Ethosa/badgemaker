@@ -90,9 +90,8 @@ proc `$`*(badge: BadgeRef): string =
 
   main.add newXMLTree(
     "rect", [], {
-      "x": "0", "y": "0", "width": $labelw, "height": $badge.height,
-      "rx": radius,
-      "ry": radius,
+      "x": "0", "y": "0", "width": $(labelw - badge.font_size),
+      "height": $badge.height, "rx": radius, "ry": radius,
       "style": "fill:" & badge.label_color
     }.toXMLAttributes)
   main.add newXMLTree(
