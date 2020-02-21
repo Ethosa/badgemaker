@@ -9,7 +9,7 @@
     <rect style="fill:fuchsia" width="12" y="0" x="208" rx="4" height="20" ry="4" />
     <path fill="url(#gradient)" d="M0 0h220v20H0z" />
   </g>
-  <g font-size="12" fill="#282A36" font-family="DejaVu Sans,Verdana,Geneva,sans-serif">
+  <g font-size="12" fill="#282A36" font-family="Monospace">
     <text y="15.0" x="26" fill="#e0e0e0">Programming language:</text>
     <text y="15.0" x="186" fill="#333">Nim</text>
   </g>
