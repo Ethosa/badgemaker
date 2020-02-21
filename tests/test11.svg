@@ -1,0 +1,16 @@
+<svg width="100" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="20">
+  <linearGradient x2="0" id="gradient" y2="100%">
+    <stop stop-color="#bbb" stop-opacity=".1" offset="0" />
+    <stop stop-opacity=".1" offset="1" />
+  </linearGradient>
+  <g mask="url(#gradient)">
+    <rect style="fill:#77dd77" width="110" y="0" x="0" rx="4" height="20" ry="4" />
+    <rect style="fill:#212121" width="10" y="0" x="84" rx="0" height="20" ry="0" />
+    <rect style="fill:#212121" width="12" y="0" x="88" rx="4" height="20" ry="4" />
+    <path fill="url(#gradient)" d="M0 0h100v20H0z" />
+  </g>
+  <g font-size="12" fill="#77dd77" font-family="DejaVu Sans,Verdana,Geneva,sans-serif">
+    <text y="15.0" x="6" fill="#212121">Open source</text>
+    <text y="15.0" x="86" fill="#dd7777">❤</text>
+  </g>
+</svg>
