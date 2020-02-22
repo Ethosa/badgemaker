@@ -1,0 +1,21 @@
+<svg width="100" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="20">
+  <linearGradient x2="0" id="gradient" y2="100%">
+    <stop stop-color="#bbb" stop-opacity=".1" offset="0" />
+    <stop stop-opacity=".1" offset="1" />
+  </linearGradient>
+  <defs><filter width="200%" y="0" x="0" id="drop_shadow" height="200%">
+      <feOffset in="SourceAlpha" dy="1" result="offOut" dx="1" />
+      <feGaussianBlur in="offOut" result="blurOut" stdDeviation="1" />
+      <feBlend in2="blurOut" mode="normal" in="SourceGraphic" />
+    </filter></defs>
+  <g mask="url(#gradient)">
+    <rect style="fill:#77dd77" width="110" y="0" x="0" rx="4" height="20" ry="4" />
+    <rect style="fill:#212121" width="10" y="0" x="84" rx="0" height="20" ry="0" />
+    <rect style="fill:#212121" width="12" y="0" x="88" rx="4" height="20" ry="4" />
+    <path fill="url(#gradient)" d="M0 0h100v20H0z" />
+  </g>
+  <g font-size="12" fill="#77dd77" font-family="DejaVu Sans,Verdana,Geneva,sans-serif">
+    <text filter="url(#drop_shadow)" y="15.0" x="6" fill="#e0e0e0">Open source</text>
+    <text filter="" y="15.0" x="86" fill="#dd7777">❤</text>
+  </g>
+</svg>

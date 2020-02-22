@@ -30,7 +30,11 @@ proc parseCommandLine*(args: seq[string]) =
     "image_color": %"",
     "font": %"DejaVu Sans,Verdana,Geneva,sans-serif",
     "font_size": %"12",
-    "style": %"plastic"
+    "style": %"plastic",
+    "label_shadow": %"false",
+    "value_shadow": %"false",
+    "dx": %"0",
+    "dy": %"0"
   }
   var opts = initOptParser(args)
 
@@ -56,6 +60,8 @@ proc parseCommandLine*(args: seq[string]) =
   badge.setFont params["font"].getStr
   badge.setFontSize params["font_size"].getStr.parseInt
   badge.setIcon params["image_path"].getStr, params["image_color"].getStr
+  badge.setShadow params["label_shadow"].getStr.parseBool, params["value_shadow"].getStr.parseBool
+  badge.offsetShadow params["dx"].getStr.parseInt, params["dy"].getStr.parseInt
 
   if not name.endsWith(".svg"):
     name &= ".svg"

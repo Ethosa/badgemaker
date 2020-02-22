@@ -14,6 +14,7 @@ The Nim badgemaker tool.
 -   Custom badge size.
 -   Custom styles (flat, plastic, square, plastic square).
 -   CLI.
+-   Text drop shadows.
 
 
 ## Standart badge params
@@ -30,6 +31,10 @@ The Nim badgemaker tool.
 -   `height` -- 20.
 -   `image_path` -- "".
 -   `image_color` -- "".
+-   `label_shadow` -- false.
+-   `value_shadow` -- false.
+-   `dx` -- 0.
+-   `dy` -- 0.
 
 ## Results
 [![test1](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test1.svg)  
@@ -42,4 +47,10 @@ The Nim badgemaker tool.
 [![test8](https://github.com/Ethosa/badgemaker/blob/master/tests/test8.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test8.svg)  
 [![test9](https://github.com/Ethosa/badgemaker/blob/master/tests/test9.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test9.svg)  
 [![test10](https://github.com/Ethosa/badgemaker/blob/master/tests/test10.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test10.svg)  
-[![test11](https://github.com/Ethosa/badgemaker/blob/master/tests/test11.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test11.svg)
+[![test11](https://github.com/Ethosa/badgemaker/blob/master/tests/test11.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test11.svg)  
+[![test13](https://github.com/Ethosa/badgemaker/blob/master/tests/test13.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test13.svg)
+
+
+## FAQ
+*Q*: How I can help to develop this library?  
+*A*: You can put a star to this repository :3
