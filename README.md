@@ -1,5 +1,9 @@
-# Badgemaker
-The Nim badgemaker tool.
+<h1 align="center">Badgemaker</h1>
+<div align="center">The Nim badgemaker tool.
+
+[![Nim language-plastic](https://github.com/Ethosa/open-source-badges/blob/master/badges/Languages/Nim/Nim-lang-plastic.svg)](https://github.com/Ethosa/open-source-badges/blob/master/badges/Languages/Nim/Nim-lang-plastic.svg)
+[![test13](https://github.com/Ethosa/badgemaker/blob/master/tests/test13.svg)](https://github.com/Ethosa/badgemaker/blob/master/tests/test13.svg)
+</div>
 
 
 ## Install
