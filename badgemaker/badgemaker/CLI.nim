@@ -33,22 +33,30 @@ proc parseCommandLine*(args: seq[string]) =
     "style": %"plastic"
   }
   var opts = initOptParser(args)
+
+  # Parse arguments
   for kind, key, value in opts.getopt:
     case kind
-    of cmdEnd: continue
-    of cmdArgument: continue
     of cmdShortOption, cmdLongOption:
       if value != "":
         if params.hasKey(key):
           params[key] = %value
-  var badge = newBadge(
-    label=params["label"].getStr, value=params["value"].getStr,
-    width=params["width"].getStr.parseInt, height=params["height"].getStr.parseInt,
-    label_color=params["label_color"].getStr, label_text_color=params["label_text_color"].getStr,
-    value_color=params["value_color"].getStr, value_text_color=params["value_text_color"].getStr,
-    style=params["style"].getStr
-  )
+    else:
+      continue
+
+  # Create a new badge.
+  var
+    badge = newBadge(
+      label=params["label"].getStr, value=params["value"].getStr,
+      width=params["width"].getStr.parseInt, height=params["height"].getStr.parseInt,
+      label_color=params["label_color"].getStr, label_text_color=params["label_text_color"].getStr,
+      value_color=params["value_color"].getStr, value_text_color=params["value_text_color"].getStr,
+      style=params["style"].getStr)
+    name = params["filename"].getStr
   badge.setFont params["font"].getStr
   badge.setFontSize params["font_size"].getStr.parseInt
   badge.setIcon params["image_path"].getStr, params["image_color"].getStr
-  badge.write params["filename"].getStr
+
+  if not name.endsWith(".svg"):
+    name &= ".svg"
+  badge.write name  # and write it in the file.
