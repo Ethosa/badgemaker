@@ -1,7 +1,7 @@
 [Package]
 name = "badgemaker"
 author = "Ethosa"
-version = "0.0.8"
+version = "0.0.9"
 description = "The Nim badgemaker tool."
 license = "AGPLv3"
 srcDir = "badgemaker"
